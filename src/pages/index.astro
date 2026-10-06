@@ -1,11 +1,49 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BackgroundSlideshow from '../components/BackgroundSlideshow.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import GlassCard from '../components/GlassCard.astro';
+import FloatingDock from '../components/FloatingDock.astro';
 ---
 
 <Layout>
-	<Welcome />
+	<BackgroundSlideshow />
+	<div class="page">
+		<Navbar />
+		<main class="main">
+			<Hero />
+			<GlassCard />
+			<FloatingDock />
+		</main>
+	</div>
 </Layout>
+
+<style>
+	.page {
+		position: relative;
+		z-index: 1;
+		height: 100vh;
+		height: 100dvh;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.main {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: clamp(18px, 4vh, 40px);
+		padding: 16px 24px clamp(20px, 4vh, 32px);
+	}
+
+	@media (max-height: 720px) {
+		.main {
+			gap: clamp(12px, 2.5vh, 22px);
+			padding-bottom: 16px;
+		}
+	}
+</style>
